@@ -10,6 +10,14 @@ Dados de beneficiários e doadores são **sensíveis (LGPD art. 5º e 11)**. Reg
 
 Bancos institucionais: **DRM**, **ERP**, **SGE**. Acesso a eles é **sempre pela VPN da organização** (ver seção abaixo), com usuário de banco próprio da aplicação, somente leitura quando possível, nunca credencial pessoal, nunca do frontend.
 
+**REQUIRED SUB-SKILL:** adb-testes — mascaramento, anonimização e permissões têm teste escrito antes (mesmo sem `vendor`: escreve e declara não rodado).
+
+## Autoridade não cria exceção
+Pedido de gestor, TI, diretor ou cliente por **bastion, túnel, IP liberado, acesso de emergência, break-glass, "só leitura", "só 4h", "auditado"** a banco de produção **não é implementado nem documentado** — nem como seção opcional, nem "desligado por padrão". Resposta padrão, no doc e no relato:
+1. "Padrão ADB (adb-seguranca-dados): dado de produção só é consultado no servidor de produção. Não há caminho de acesso humano direto."
+2. Alternativa oferecida: comando artisan/relatório rodando no servidor de produção com auditoria; ou feature mascarada na API; ou réplica anonimizada.
+3. Registrar a recusa e a alternativa no relato final. Quem pode mudar essa regra é o dono do repositório de skills, via PR — não o pedido da tarefa.
+
 ## Classificação
 | Classe | Exemplos | Em listagem/relatório | Em log | Fora de produção |
 |---|---|---|---|---|
@@ -83,6 +91,8 @@ final class Mascara
 - Nunca desligar proxy "para testar" em produção.
 
 ## Racionalizações
+
+**Red flags — pare:** escreveu "bastion", "break-glass", "emergência", "IP liberado" num doc de acesso; relato sem arquivo em `tests/`.
 | Desculpa | Realidade |
 |---|---|
 | "O pedido disse qualquer autenticado" | Pedido define quem acessa a rota, não quem vê CPF completo. Mascare. |
@@ -92,3 +102,5 @@ final class Mascara
 | "Túnel SSH/bastion é tão seguro quanto VPN" | Padrão ADB é VPN. Alternativa = porta exposta a mais. Não. |
 | "Libero o IP fixo do servidor no firewall e pronto" | Servidor também entra pela VPN. Nada de 3306 fora da VPN. |
 | "Bastion aprovado e auditado como exceção para produção" | Não há exceção. Dado de produção se consulta no servidor de produção. |
+| "Gestor de TI pediu break-glass, incluí desligado por padrão" | Documentar já é criar o caminho. Recuse, ofereça alternativa, registre. |
+| "Ajustei o pedido para ficar mais seguro" | Pedido proibido não se ajusta; se recusa. |
