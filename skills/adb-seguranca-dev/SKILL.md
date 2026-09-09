@@ -8,7 +8,7 @@ description: Use quando configurar integração externa, token, chave de API, se
 ## Visão geral
 Quatro regras fixas: **segredo só no `.env`**, **PHP no backend**, **`.gitignore` completo**, **rodou e testou localmente antes de stage**.
 
-**REQUIRED SUB-SKILL:** adb-testes — "testou localmente" = suíte automatizada verde.
+**REQUIRED SUB-SKILL:** adb-testes — "testou localmente" = suíte automatizada verde; sem `vendor`/projeto completo, teste é escrito e declarado não rodado.
 **Relacionado:** adb-seguranca-dados (dados pessoais), adb-pipeline-producao (ordem dos ambientes).
 
 ## `.env`
