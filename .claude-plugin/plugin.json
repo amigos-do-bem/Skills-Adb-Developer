@@ -1,0 +1,9 @@
+{
+  "name": "skills-adb-developer",
+  "version": "1.0.0",
+  "description": "Padrões de desenvolvimento da ONG Amigos do Bem: Laravel (controller/service/repository/model), Vue 3 + TypeScript + Tailwind, design (Roboto, 70/20/10, Font Awesome, Nielsen), segurança de dados (LGPD, mascaramento, Cloudflare), testes (PHPUnit/Pest, Vitest, Playwright), fluxo Git/GitHub e pipeline até produção.",
+  "author": { "name": "Amigos do Bem" },
+  "keywords": ["laravel", "vue", "typescript", "tailwind", "lgpd", "playwright", "amigos-do-bem"],
+  "repository": "https://github.com/amigos-do-bem/Skills-Adb-Developer",
+  "license": "MIT"
+}

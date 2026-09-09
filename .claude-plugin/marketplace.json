@@ -1,0 +1,12 @@
+{
+  "name": "skills-adb-developer",
+  "owner": { "name": "Amigos do Bem" },
+  "description": "Conjunto de skills Claude Code com os padrões de desenvolvimento da Amigos do Bem",
+  "plugins": [
+    {
+      "name": "skills-adb-developer",
+      "source": "./",
+      "description": "Skills adb-* (backend, frontend, design, segurança, testes, git, pipeline) + vue-development, nielsen-heuristics-audit, ui-design-review"
+    }
+  ]
+}
