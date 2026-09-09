@@ -71,7 +71,8 @@ final class Mascara
 - VPN é o **único** caminho. Túnel SSH, bastion, allowlist de IP público, port-forward, ngrok, "abrir a porta só hoje" — **não substituem** a VPN e são proibidos.
 - Credencial de VPN é pessoal (por dev) ou por servidor (certificado/perfil próprio), com MFA; nunca compartilhada, nunca no repositório.
 - Servidor de aplicação conecta pelo endereço interno da VPN (`*.amigosdobem.local` / IP privado) definido em `DB_HOST` no `.env` daquele ambiente; se a VPN cai, a aplicação falha fechada (erro de conexão), nunca cai para outro host.
-- Dev local aponta para réplica/homologação **anonimizada** pela VPN; produção real só de servidor de produção.
+- Dev local aponta para réplica/homologação **anonimizada** pela VPN; produção real só de servidor de produção. **Não existe exceção "aprovada"** (bastion, acesso pontual, "só leitura") para dev alcançar banco de produção: quem precisa de dado de produção roda comando/relatório **no servidor de produção**, via deploy, com auditoria.
+- Servidores entram pela VPN site-to-site ou pela rede privada da própria organização; peering/túnel com terceiros não conta como VPN.
 - `docs/ACESSO-<BANCO>.md` de cada projeto descreve: como obter perfil VPN (chamado à TI), host interno, usuário da aplicação e permissões (`GRANT SELECT` mínimo). Sem esse doc, o PR que adiciona a conexão não está completo.
 
 ## Cloudflare (frente de toda app pública)
@@ -90,3 +91,4 @@ final class Mascara
 | "Só o time de relatórios usa" | Permissão explícita + auditoria, ou não sai. |
 | "Túnel SSH/bastion é tão seguro quanto VPN" | Padrão ADB é VPN. Alternativa = porta exposta a mais. Não. |
 | "Libero o IP fixo do servidor no firewall e pronto" | Servidor também entra pela VPN. Nada de 3306 fora da VPN. |
+| "Bastion aprovado e auditado como exceção para produção" | Não há exceção. Dado de produção se consulta no servidor de produção. |
