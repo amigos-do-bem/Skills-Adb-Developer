@@ -10,6 +10,7 @@ Toda feature backend segue **Controller → Service → Repository → Model**, 
 Controller fino, regra no Service, SQL no Repository, Model só estado e relações.
 
 **REQUIRED SUB-SKILL:** adb-testes + superpowers:test-driven-development — teste Feature/Unit escrito **antes** do código, mesmo sem `vendor`/projeto completo (nesse caso: escreve, e declara que não rodou). "Só arquivos soltos, sem projeto" não dispensa `tests/`.
+**REQUIRED SUB-SKILL:** ponytail:ponytail — menor diff que resolve. Regra do framework (validação de `FormRequest`, `constrained()`, cast, scope, policy) antes de código próprio; Service/Repository novos só quando há regra nova.
 **Referência externa:** https://skills.laravel.cloud/ (`laravel-patterns`, `laravel-security`, `laravel-tdd`).
 Instalar num projeto: `composer require laravel/boost --dev` e depois o comando `php artisan boost:add-skill ...` mostrado na página do skill.
 
