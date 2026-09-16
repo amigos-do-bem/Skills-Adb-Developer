@@ -26,6 +26,9 @@ Prazo apertado, "tarefa simples", "esqueleto sem vendor", "o usuário disse que 
 
 **Regra estrutural:** toda view/página nova (`src/views/**`, `src/pages/**`) nasce com o par `e2e/<nome-da-tela>.spec.ts` no mesmo commit. Sem o arquivo, a tela não existe para o PR. Login, cadastro e qualquer tela com formulário são as primeiras — não as últimas.
 
+## O que NÃO exige teste novo
+Reuso puro de helper/componente/dependência já existente, sem lógica nova (trocar `search` por `refDebounced(search)`, usar `formatCnpj` que já existe, adicionar `min="0"` num input). Não crie arquivo, função pura ou constante só para ter o que testar — isso é código a mais (ponytail). Surgiu regra nova? Aí nasce com teste.
+
 ## Fluxo obrigatório
 1. Escrever o teste que descreve o comportamento. Rodar → **vermelho** (colar a saída).
 2. Código mínimo. Rodar → **verde** (colar a saída).

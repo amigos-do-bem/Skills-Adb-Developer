@@ -13,6 +13,7 @@ Estilo só com classes Tailwind e tokens do tema (`tailwind-theme.css`) — nada
 **REQUIRED SUB-SKILL:** vue-development (alexanderop) — padrões de componente, composable, teste. Instalado em `~/.claude/skills/vue-development`.
 **REQUIRED SUB-SKILL:** adb-design-ui — fonte, cores, ícones, heurísticas.
 **REQUIRED SUB-SKILL:** superpowers:test-driven-development — Vitest antes do código; e2e em adb-testes.
+**REQUIRED SUB-SKILL:** ponytail:ponytail — menor diff que resolve. Antes de criar composable, lib ou constante, procure em `src/lib`, `src/components/ui`, `src/composables` e nas dependências do `package.json` (ex.: `@vueuse/core` já cobre debounce, storage, media query).
 
 ## Estrutura de pastas (por feature)
 ```
@@ -95,3 +96,4 @@ Ações (salvar, excluir): botão com `:disabled="enviando"` + texto "Salvando�
 | axios direto na view | `services/xService.ts` + composable. |
 | Filtro muda e resposta antiga chega depois | `AbortController` (acima). |
 | Store Pinia para dado de uma tela só | Composable local. Store = compartilhado. |
+| Extrair função pura + spec + constante nova só para encaixar um helper que já existe (ex.: trocar `search` por `refDebounced(search)`) | Reuso sem lógica nova muda só a view: 2 linhas, 1 arquivo, sem teste novo. Extraia quando houver regra nova a testar. |

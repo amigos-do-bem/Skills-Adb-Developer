@@ -1,7 +1,7 @@
 # Skills-Adb-Developer
 
 Conjunto de skills do Claude Code com os **padrões de desenvolvimento da Amigos do Bem**.
-Uma skill por tópico; o índice `adb-padroes` aponta qual usar. Todas em pt-BR.
+Uma skill por tópico; o índice `adb-padroes` aponta qual usar. Todas em pt-BR. Processo (superpowers), código mínimo (ponytail) e comunicação enxuta (caveman) fazem parte do conjunto.
 
 ## Instalação
 
@@ -23,6 +23,7 @@ Reinicie a sessão do Claude Code depois de instalar.
 /plugin install superpowers@claude-plugins-official      # processo: brainstorming, TDD, debugging, planos, verificação
 /plugin marketplace add caveman && /plugin install caveman@caveman   # comunicação enxuta, /caveman-commit, /caveman-review
 /plugin install frontend-design@claude-plugins-official  # direção estética (dentro das regras de adb-design-ui)
+/plugin marketplace add DietrichGebert/ponytail && /plugin install ponytail@ponytail   # código mínimo (escada YAGNI), /ponytail-review
 ```
 
 **Laravel (por projeto):** skills de https://skills.laravel.cloud/ (`laravel-patterns`, `laravel-security`, `laravel-tdd`):
@@ -56,7 +57,7 @@ brainstorming → plano → branch nova → TDD (`adb-testes`) → implementaç�
 
 ## Como as skills foram validadas
 
-Cada skill `adb-*` seguiu TDD de documentação (`superpowers:writing-skills`): cenário rodado por um agente **sem** a skill (baseline, falhas registradas), skill escrita contra essas falhas, cenário repetido **com** a skill, brechas fechadas e re-testadas. Exemplos de falhas do baseline corrigidas: merge local na `main` sem PR; `deploy:prod` executado com "gate de stage simulado como OK"; CPF e laudo médico completos para qualquer autenticado; fonte e paleta fora do padrão; `php -l` apresentado como teste.
+Cada skill `adb-*` seguiu TDD de documentação (`superpowers:writing-skills`): cenário rodado por um agente **sem** a skill (baseline, falhas registradas), skill escrita contra essas falhas, cenário repetido **com** a skill, brechas fechadas e re-testadas. Exemplos de falhas do baseline corrigidas: lib nova + spec + constante para encaixar um `refDebounced` que já existia (4 arquivos para 2 linhas); merge local na `main` sem PR; `deploy:prod` executado com "gate de stage simulado como OK"; CPF e laudo médico completos para qualquer autenticado; fonte e paleta fora do padrão; `php -l` apresentado como teste.
 
 ## Alterar uma skill
 
