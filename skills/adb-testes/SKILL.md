@@ -56,6 +56,7 @@ it('rejeita prioridade desconhecida', function () {
 ```
 
 ## Playwright e2e — regras
+- Mobile first: `playwright.config.ts` com projeto **celular** (ex.: `devices['Pixel 7']`) listado antes do desktop; todo spec roda nos dois.
 - Seletores por papel/texto (`getByRole('button', { name: 'Entrar' })`), nunca por classe Tailwind.
 - Sem `waitForTimeout`; use `expect(locator).toBeVisible()`.
 - Login via `storageState` reaproveitado; API mockada com `page.route` quando o backend não está disponível.
