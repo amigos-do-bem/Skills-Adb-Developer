@@ -12,6 +12,15 @@ Design com **cuidado**: pense antes de estilizar — para quem é a tela, qual a
 **REQUIRED SUB-SKILL (revisão):** nielsen-heuristics-audit e ui-design-review (mastepanoski) — em `~/.claude/skills/`. Rodar o audit em toda tela nova antes de entregar.
 **Sugerido:** frontend-design (plugin) para direção estética, respeitando as regras abaixo.
 
+## Mobile first (obrigatório)
+Toda tela nasce no celular (360px) e cresce para o desktop — nunca o contrário.
+- Desenhe, implemente e revise **primeiro em 360px**; depois 768px e 1280px.
+- Tailwind: classes **sem prefixo = celular**. `sm:`/`md:`/`lg:` só **acrescentam** layout para telas maiores. Nada de `max-*:` para "consertar" o celular.
+- Uma coluna por padrão; grade (`sm:grid-cols-2 lg:grid-cols-3`) só a partir do breakpoint.
+- Alvo de toque mínimo 44px (`min-h-11`), texto de corpo ≥ 16px em campos (evita zoom no iOS), sem rolagem horizontal.
+- Ação principal alcançável com o polegar: botão largo (`w-full sm:w-auto`), menu do topo vira botão ☰ abaixo de `md`.
+- Conteúdo decorativo (mockups, painéis de marca) pode sumir no celular (`hidden lg:flex`); conteúdo e ações, nunca.
+
 ## Tipografia
 - Única família: `Roboto` (Google Fonts) com fallback `system-ui, sans-serif`. Não introduzir outra fonte.
 - Escala: título 24–32/500, subtítulo 18–20/500, corpo 14–16/400, legenda 12/400. Line-height 1.5 no corpo.
@@ -52,7 +61,7 @@ Design com **cuidado**: pense antes de estilizar — para quem é a tela, qual a
 2. Esboçar hierarquia: o que é 70/20/10 nesta tela.
 3. Implementar com componentes Base* existentes antes de criar novo.
 4. Rodar `nielsen-heuristics-audit` na tela; corrigir severidade ≥ 3.
-5. Testar em 360px e 1280px; teclado (Tab/Enter/Esc).
+5. Testar **primeiro em 360px**, depois 768px e 1280px; teclado (Tab/Enter/Esc).
 
 ## Erros comuns
 | Erro | Correção |
@@ -62,3 +71,5 @@ Design com **cuidado**: pense antes de estilizar — para quem é a tela, qual a
 | Ícones inline SVG de outra lib | FontAwesome registrado na library. |
 | Heurísticas "aplicadas intuitivamente" | Checklist acima, item a item, no relato final. |
 | Cor como único indicador de status | Texto + ícone junto. |
+| Tela feita no desktop e "adaptada" no fim | Mobile first: começa em 360px, breakpoints só acrescentam. |
+| `max-md:`/`max-sm:` para corrigir o celular | Classe sem prefixo já é o celular; reescreva de baixo para cima. |

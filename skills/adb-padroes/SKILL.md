@@ -37,6 +37,7 @@ Conjunto de skills que define **como** se desenvolve nos projetos Amigos do Bem.
 | Laravel skills (skills.laravel.cloud) | `laravel-patterns`, `laravel-security`, `laravel-tdd` | por projeto: `composer require laravel/boost --dev` + comando `php artisan boost:add-skill …` da página |
 
 ## Regras transversais (valem sempre)
+- Interface **mobile first**: toda tela começa em 360px e cresce (adb-design-ui).
 - Idioma: código/identificadores de domínio, commits, PRs, mensagens ao usuário em **pt-BR**.
 - Repositórios **privados** na org `amigos-do-bem`.
 - Nada de segredo em código, chat ou commit.

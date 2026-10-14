@@ -27,6 +27,17 @@ src/
   stores/<feature>Store.ts                 # Pinia só p/ estado compartilhado entre telas
 ```
 
+O que vale é a **separação de papéis**, não o idioma do nome da pasta. Projeto que
+nomeia o domínio em pt-BR mantém a coerência até a árvore de arquivos e usa
+`telas/`, `componentes/`, `servicos/`, `layouts/` e `ui/` — é o caso do
+`adb-padaria-vue`. Escolha um dos dois e use em todo o repositório; renomear
+árvore existente só para trocar o idioma é diff sem ganho.
+
+Pasta `types/` é opcional. Tipo que só existe por causa de um endpoint pode
+morar no próprio `services/<feature>.ts`, junto da função que o devolve — mantém
+chamada e formato no mesmo arquivo. `types/` se justifica quando o mesmo tipo é
+usado por mais de um service ou por store e componente sem passar pelo service.
+
 ## Padrões de projeto (obrigatório)
 | Padrão | Onde | Regra |
 |---|---|---|
@@ -84,6 +95,7 @@ Ações (salvar, excluir): botão com `:disabled="enviando"` + texto "Salvando�
 - [ ] View nova → `e2e/<tela>.spec.ts` (Playwright) no mesmo commit
 - [ ] Skeleton + erro + vazio nos três lugares
 - [ ] Só Tailwind (zero `<style>` com regras próprias, exceto tokens do tema)
+- [ ] Mobile first: classes sem prefixo = celular, `sm:`/`md:`/`lg:` só acrescentam; conferido em 360px antes de 1280px
 - [ ] Props/emits tipados, `service` sem `any`
 - [ ] Ícones FontAwesome, fonte Roboto (adb-design-ui)
 - [ ] `vue-tsc --noEmit` sem erro
@@ -91,6 +103,7 @@ Ações (salvar, excluir): botão com `:disabled="enviando"` + texto "Salvando�
 ## Erros comuns
 | Erro | Correção |
 |---|---|
+| Layout pensado no desktop, `max-*:` para o celular | Mobile first (adb-design-ui): base = celular, breakpoints crescem. |
 | `<style scoped>` com CSS próprio | Classes Tailwind; cor via token `bg-primaria` etc. |
 | `carregando` sem skeleton ("só um spinner") | Skeleton com o formato do conteúdo. Spinner só em botão. |
 | axios direto na view | `services/xService.ts` + composable. |
